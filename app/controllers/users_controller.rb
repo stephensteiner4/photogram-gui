@@ -10,6 +10,8 @@ class UsersController < ApplicationController
 
     @user_info = User.where({:username => username}).at(0)
 
+    @photo_list = Photo.all.where({:owner_id => @user_info.id})
+
     render({ :template => "/user_templates/details" })
   end
 end
