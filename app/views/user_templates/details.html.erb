@@ -17,8 +17,8 @@
     Edit user
   </dt>
   <dd>
-    <form>
-      <label for="edit_username" method="post;">Username</label>
+    <form action="/modify_user/<%=@user_info.username%>" method="post">
+      <label for="edit_username">Username</label>
       <input name="edit_username" id="new_username" value=<%=@user_info.username %>>
       <button>Update user</button>
 
