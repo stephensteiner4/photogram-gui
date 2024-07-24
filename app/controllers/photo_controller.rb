@@ -1,6 +1,6 @@
 class PhotoController < ApplicationController
   def index
-    @list_of_photos = Photo.all
+    @list_of_photos = Photo.all.order({:created_at => :desc})
 
     render({ :template => "/photo_templates/index" })
   end
@@ -10,6 +10,16 @@ class PhotoController < ApplicationController
     @photo_detail = Photo.where({:id => photo_id}).at(0)
 
     render({:template => "/photo_templates/details"})
+  end
+
+  def create
+    new_photo = Photo.new
+
+    new_photo.image = params.fetch("add_src")
+    new_photo.caption = params.fetch("add_caption")
+    new_photo.owner_id = params.fetch("add_ownerid")
+
+    new_photo.save
   end
 
   def update
