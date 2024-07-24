@@ -17,7 +17,7 @@
     Caption
   </dt>
   <dd>
-    <%= @photo_detail.caption %>
+    <p><%= @photo_detail.caption %></p>
   </dd>
 
   <dt>
@@ -42,10 +42,64 @@
       <label for="edit_src">Image</label>
       <input name="edit_src" id="photo_editsource" value="<%=@photo_detail.image%>">
 
-      <label for="edit_caption">
+      <label for="edit_caption">Caption</label>
       <textarea name="edit_caption" id="caption_edittext" rows=2><%=@photo_detail.caption%></textarea>
 
       <button>Update photo</button>
     </form>
   </dd>
+
+  <dt>
+    Delete photo
+  </dt>
+  <dd>
+    <a href="/delete_photo/<%= @photo_detail.id %>">Delete this photo</a>
+  </dd>
 </dl>
+
+<h2>Comments</h2>
+
+<table>
+  <tr>
+    <th>
+      Commenter
+    </th>
+    <th>
+      Comment
+    </th>
+    <th>
+      Posted
+    </th>
+  </tr>
+
+  <% @comment_list.each do |comment| %>
+    <tr>
+      <td>
+        <%= comment.commenter.username %>
+      </td>
+
+      <td>
+        <%= comment.body %>
+      </td>
+
+      <td>
+        <%= comment.created_at %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<h3>Add a new comment</h3>
+
+<form action="/comment" method="post">
+  <label for="comment_photoid">Photo ID</label>
+  <input name="comment_photoid" id="addcomment_photoid" value=<%=@photo_detail.id%>>
+
+  <label for="enter_authorid">Author ID</label>
+  <input name="enter_authorid" id="addcomment_authorid" placeholder="Enter your author ID" >
+
+  <label for="comment_body">Comment</label>
+  <textarea name="comment_body" id="addcomment_body" placeholder="Enter a comment..." ></textarea>
+
+  <button>Add comment</button>
+</form>

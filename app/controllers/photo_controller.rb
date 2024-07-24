@@ -9,6 +9,8 @@ class PhotoController < ApplicationController
     photo_id = params.fetch("path_id").to_i
     @photo_detail = Photo.where({:id => photo_id}).at(0)
 
+    @comment_list = @photo_detail.comments
+
     render({:template => "/photo_templates/details"})
   end
 
@@ -20,6 +22,19 @@ class PhotoController < ApplicationController
     new_photo.owner_id = params.fetch("add_ownerid")
 
     new_photo.save
+
+    redirect_to("/photos/#{new_photo.id}", {:notice => "Photo successfully created."})
+  end
+
+  def destroy
+    photo_id = params.fetch("path_id").to_i
+
+    @select_photo = Photo.where({:id => photo_id}).at(0)
+
+    @select_photo.destroy
+
+    redirect_to("/photos", {:notice => "Photo deleted successfully."})
+
   end
 
   def update
