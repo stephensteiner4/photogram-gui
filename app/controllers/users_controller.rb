@@ -18,7 +18,7 @@ class UsersController < ApplicationController
   def create
     @new_user = User.new
 
-    @new_username = params.fetch("add_newuser")
+    @new_username = params.fetch("new_user")
 
     @new_user.username = @new_username
 
@@ -33,10 +33,10 @@ class UsersController < ApplicationController
   end
 
   def update
-    the_username = params.fetch("user")
-    new_name = params.fetch("edit_username")
+    the_username = params.fetch("user_id")
+    new_name = params.fetch("new_username")
 
-    @the_user = User.where({:username => the_username}).at(0)
+    @the_user = User.where({:id => the_username}).at(0)
 
     @the_user.username = new_name
 

@@ -3,9 +3,9 @@ class CommentController < ApplicationController
   def add
     new_comment = Comment.new
 
-    new_comment.photo_id = params.fetch("comment_photoid").to_i
-    new_comment.author_id = params.fetch("enter_authorid").to_i
-    new_comment.body = params.fetch("comment_body")
+    new_comment.photo_id = params.fetch("addcomment_photoid").to_i
+    new_comment.author_id = params.fetch("addcomment_authorid").to_i
+    new_comment.body = params.fetch("addcomment_body")
 
     new_comment.save
 

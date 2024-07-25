@@ -17,9 +17,9 @@
     Edit user
   </dt>
   <dd>
-    <form action="/modify_user/<%=@user_info.username%>" method="post">
+    <form action="/update_user/<%=@user_info.id%>" method="post">
       <label for="edit_username">Username</label>
-      <input name="edit_username" id="new_username" value=<%=@user_info.username %>>
+      <input name="new_username" type="text" id="edit_username" value=<%=@user_info.username %>>
       <button>Update user</button>
 
     </form>
@@ -61,7 +61,7 @@
         <%= photo.created_at %>
       </td>
       <td>
-        Show details
+        <a href="/photos/<%= photo.id%>">Show details</a>
       </td>
     </tr>
   <% end %>

@@ -38,12 +38,12 @@
     Edit photo
   </dt>
   <dd>
-    <form action="/modify_photo/<%=@photo_detail.id%>" method="post">
+    <form action="/update_photo/<%=@photo_detail.id%>" method="post">
       <label for="edit_src">Image</label>
-      <input name="edit_src" id="photo_editsource" value="<%=@photo_detail.image%>">
+      <input name="photo_editsource" id="edit_src" value="<%=@photo_detail.image%>">
 
       <label for="edit_caption">Caption</label>
-      <textarea name="edit_caption" id="caption_edittext" rows=2><%=@photo_detail.caption%></textarea>
+      <textarea name="caption_edittext" id="edit_caption" rows=2><%=@photo_detail.caption%></textarea>
 
       <button>Update photo</button>
     </form>
@@ -93,13 +93,13 @@
 
 <form action="/comment" method="post">
   <label for="comment_photoid">Photo ID</label>
-  <input name="comment_photoid" id="addcomment_photoid" value=<%=@photo_detail.id%>>
+  <input name="addcomment_photoid" id="comment_photoid" value=<%=@photo_detail.id%>>
 
   <label for="enter_authorid">Author ID</label>
-  <input name="enter_authorid" id="addcomment_authorid" placeholder="Enter your author ID" >
+  <input name="addcomment_authorid" id="enter_authorid" placeholder="Enter your author ID" >
 
   <label for="comment_body">Comment</label>
-  <textarea name="comment_body" id="addcomment_body" placeholder="Enter a comment..." ></textarea>
+  <textarea name="addcomment_body" id="comment_body" placeholder="Enter a comment..." ></textarea>
 
   <button>Add comment</button>
 </form>
